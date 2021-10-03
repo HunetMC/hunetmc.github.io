@@ -1,5 +1,5 @@
 // Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap/Container';
 
 // Next.js
 import Head from "next/head"
@@ -18,8 +18,8 @@ const Layout = (props) => {
             <link rel="icon" href="/images/favicon.ico" />
           </Head>
           <main>
-          <Navbar />
-            <div className="container mx-auto">
+            <Navbar />
+            <div className="container">
               {children}
             </div>
           </main>
