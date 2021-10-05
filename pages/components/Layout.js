@@ -9,7 +9,7 @@ import Navbar from './Navbar'
 
 const Layout = (props) => {
     const { title, children } = props
-    const siteTitle = "web"
+    const siteTitle = "HunetMC"
     
     return (
         <>
