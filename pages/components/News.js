@@ -7,6 +7,9 @@ import useSwr from 'swr'
 // Data fetching implements
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
+// Next.js
+import Link from "next/link"
+
 function App (props) {
     const { data, error } = useSwr(
       '/api/TumblrPost',
@@ -27,7 +30,11 @@ function App (props) {
         <div>
             <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
-                <Card.Title>{d.title} ({d.date})</Card.Title>
+                <Link href={d.url}>
+                    <a>
+                        <Card.Title>{d.title} ({d.date})</Card.Title>
+                    </a>
+                </Link>
                 <Card.Text dangerouslySetInnerHTML={{ __html: d.body }} />
               </Card.Body>
             </Card>
@@ -35,6 +42,7 @@ function App (props) {
         );
         return (
             <>
+                <h3>ニュース</h3>
                 {content}
             </>
         )
