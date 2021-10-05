@@ -26,9 +26,9 @@ function App (props) {
           <>読み込み中...</>
         )
       } else {
-        const content = data.posts.map((d, _) => 
+        const content = data.posts.map((d) => 
         <div>
-            <Card style={{ 'margin-bottom': '5px' }}>
+            <Card style={{ 'margin-bottom': '5px' }} key={d.slug}>
               <Card.Body>
                 <Link href={d.url}>
                     <a>

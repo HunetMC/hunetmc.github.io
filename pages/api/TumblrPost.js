@@ -20,6 +20,7 @@ const TumblrPost = async (req, res) => {
         obj.url = item.post_url;
         obj.title = item.title;
         obj.body = item.body;
+        obj.slug = item.slug;
         return obj
     })
     return res.status(200).json({
