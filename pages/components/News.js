@@ -26,7 +26,7 @@ function App (props) {
           <>読み込み中...</>
         )
       } else {
-        const content = data.posts.map((d) => 
+        const content = data.posts.map((d, _) => 
         <div>
             <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
