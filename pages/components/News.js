@@ -23,10 +23,9 @@ function App (props) {
           <>読み込み中...</>
         )
       } else {
-        console.log(data.posts)
         const content = data.posts.map((d) => 
         <div>
-            <Card style={{ width: '50%' }}>
+            <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
                 <Card.Title>{d.title} ({d.date})</Card.Title>
                 <Card.Text dangerouslySetInnerHTML={{ __html: d.body }} />
