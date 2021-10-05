@@ -27,8 +27,8 @@ function App (props) {
         )
       } else {
         const content = data.posts.map((d) => 
-        <div>
-            <Card style={{ 'margin-bottom': '5px' }} key={d.slug}>
+        <div key={d.slug}>
+            <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
                 <Link href={d.url}>
                     <a>
