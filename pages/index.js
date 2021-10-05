@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 export default function Home() {
   return (
     <Layout title="ホーム">
-      <Container style={{ 'margin-top': '5px' }}>
+      <Container style={{ 'marginTop': '5px' }}>
         <Row>
           <Col xs={8}>
             <News />
