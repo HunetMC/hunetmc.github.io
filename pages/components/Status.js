@@ -28,8 +28,14 @@ function App (props) {
             <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
                 <Card.Text>
-                    {data.players.online} 人がプレイしています。<br />
-                    <code>skura.tech</code> から参加できます。
+                    {data.players.online === 0 ? (
+                      <span>誰もログインしていません。</span>
+                    ) : (
+                      <span><span style={{ "color" : "gray" }, { "font-size" : "25px" }}>{data.players.online}</span>人がオンラインです。</span>
+                    )}
+                    <br />
+                    アドレス: <code>skura.tech</code><br />
+                    バージョン: 1.17.1
                 </Card.Text>
               </Card.Body>
             </Card>
