@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// React
+import React from 'react';
+
+// Data fetching
+import useSwr from 'swr'
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
+// Bootstrap
+import Container from 'react-bootstrap/Group';
 
 function App (props) {
   const uuid = props;
-  const [data, setData] = useState({ hits: [] });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(
-        'https://api.skura.tech/players/group/' + uuid.uuid,
-      );
-      setData(result.data);
-    };  
-    fetchData();
-  }, []);
   
-  if (data === undefined || data === null){
-    return <p></p>
-  }else {
-        if (data.toString() == "staff") {
-            return <span className="inline-flex items-center justify-center px-3 py-2 text-base font-bold leading-none text-indigo-100 bg-indigo-700 rounded ml-3">Staff</span>
-        } else {
-            return <></>
-        }
-    };
+  const { data, error } = useSwr(
+    uuid.uuid ? `https://api.skura.tech/players/group/` + uuid.uuid : null,
+    fetcher
+  )
+  
+  if (error) {
+    return <p>エラーが発生しました。</p>
+  } else {
+    if (data.toString() == "Staff") {
+      return <Badge bg="info">Staff</Badge>
+    } else {
+      return <></>
+    }  
+  }
 }
 
 export default App;
