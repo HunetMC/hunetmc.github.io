@@ -1,6 +1,5 @@
 // React
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 export const getName = async (props) => {
   const uuid = props;

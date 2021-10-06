@@ -3,7 +3,7 @@ import React from 'react';
 
 // Data fetching
 import useSwr from 'swr'
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url) => fetch(url).then((res) => res.text())
 
 // Bootstrap
 import Badge from 'react-bootstrap/Badge';

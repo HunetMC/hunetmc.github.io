@@ -3,7 +3,7 @@ import React from 'react';
 
 // Data fetching
 import useSwr from 'swr'
-const fetcher = (url) => fetch(url).then((res) => res.json())
+const fetcher = (url) => fetch(url).then(res => res.text())
 
 function App (props) {
   const uuid = props;
@@ -35,7 +35,7 @@ function App (props) {
 };
 
     const { data, error } = useSwr(
-        uuid.uuid ? `https://api.skura.tech/players/online/${uuid.uuid}` : null,
+        uuid.uuid ? `https://api.skura.tech/players/last/${uuid.uuid}` : null,
         fetcher
     )
     
