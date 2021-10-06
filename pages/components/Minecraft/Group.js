@@ -6,7 +6,7 @@ import useSwr from 'swr'
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 // Bootstrap
-import Container from 'react-bootstrap/Group';
+import Badge from 'react-bootstrap/Group';
 
 function App (props) {
   const uuid = props;
