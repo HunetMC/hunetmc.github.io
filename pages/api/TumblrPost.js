@@ -4,7 +4,7 @@ const {
 
 
 export const TumblrAPI = async () => {
-  return fetch('https://api.tumblr.com/v2/blog/skuratech.tumblr.com/posts?api_key=' + api_key);
+  return fetch('https://api.tumblr.com/v2/blog/hunetmc.tumblr.com/posts?api_key=' + api_key);
 };
 
 const TumblrPost = async (req, res) => {
