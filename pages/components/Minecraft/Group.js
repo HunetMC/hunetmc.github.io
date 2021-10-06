@@ -19,7 +19,7 @@ function App (props) {
   if (error) {
     return <p>エラーが発生しました。</p>
   } else {
-    if (data.toString() == "Staff") {
+    if (data == "Staff") {
       return <Badge bg="info">Staff</Badge>
     } else {
       return <></>
