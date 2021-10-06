@@ -23,17 +23,22 @@ function App (props) {
           <>読み込み中...</>
         )
       } else {
+        var status;
+        if (!data.online) {
+          status = "<span>サーバーはオフラインです</span>"
+        } else {
+          if (data.players.online == 0) {
+            status = "<span>誰もログインしていません。</span>"
+          } else {
+            status = "<span><span style={{ 'color' : 'gray' }, { 'font-size' : '25px' }}>" + data.players.online + "</span>人がオンラインです。</span>"
+          }
+        }
         return (
             <div>
             <Card style={{ 'margin-bottom': '5px' }}>
               <Card.Body>
                 <Card.Text>
-                    {data.players.online === 0 ? (
-                      <span>誰もログインしていません。</span>
-                    ) : (
-                      <span><span style={{ "color" : "gray" }, { "font-size" : "25px" }}>{data.players.online}</span>人がオンラインです。</span>
-                    )}
-                    <br />
+                    <div dangerouslySetInnerHTML={{ __html: status }} />
                     アドレス: <code>skura.tech</code><br />
                     バージョン: 1.17.1
                 </Card.Text>
