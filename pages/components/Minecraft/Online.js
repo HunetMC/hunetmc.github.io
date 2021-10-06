@@ -16,7 +16,7 @@ function App (props) {
   )
   
   if (error) {
-    return <p>エラーが発生しました。</p>
+    return <></>
   } else {
     if (!data) {
       return <p>取得中...</p>

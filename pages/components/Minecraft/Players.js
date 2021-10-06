@@ -12,9 +12,8 @@ function App (props) {
         <div>
             <Head uuid={uuid.uuid} />
         </div>
-        <div className="w-5"></div>
         <div>
-          <p className="text-2xl text-mono"><PlayerNameHolder uuid={uuid.uuid} /></p>
+          <p><PlayerNameHolder uuid={uuid.uuid} /></p>
           <p><Online uuid={uuid.uuid} /></p>
           <p><Biography uuid={uuid.uuid} /></p>
         </div>

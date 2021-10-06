@@ -9,6 +9,7 @@ function App (props) {
         src={"https://crafatar.com/renders/body/" + uuid.uuid}
         width={110}
         height={250}
+        alt={uuid.uuid}
     />
   )
 }

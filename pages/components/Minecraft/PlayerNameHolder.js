@@ -15,7 +15,7 @@ function App (props) {
   
   if (error) {
     return (
-      <>エラーが発生しました。</>
+      <></>
     )
   } else {
     if (!data) {
@@ -24,13 +24,7 @@ function App (props) {
       )
     } else {
         return (
-          <>
-            <div className='has-tooltip'>
-              <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8 font-mono text-sm'>UUID: {uuid.uuid}</span>
-              <p className="text-2xl inline">{data.username}</p>
-              <Group uuid={uuid.uuid} />
-            </div>
-          </>
+          <>{data.username}</>
         )
     }
   }

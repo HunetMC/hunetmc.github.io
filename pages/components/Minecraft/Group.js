@@ -17,13 +17,17 @@ function App (props) {
   )
   
   if (error) {
-    return <p>エラーが発生しました。</p>
+    return <></>
   } else {
-    if (data == "Staff") {
-      return <Badge bg="info">Staff</Badge>
-    } else {
+    if (data === undefined || data === null || data === "") {
       return <></>
-    }  
+    } else {
+      if (data == "Staff") {
+        return <Badge bg="info">Staff</Badge>
+      } else {
+        return <></>
+      }
+    }
   }
 }
 
