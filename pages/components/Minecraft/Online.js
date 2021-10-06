@@ -16,13 +16,7 @@ function App (props) {
   )
   
   if (error) {
-    return (
-      <>
-        <Layout title="エラー - プレイヤー情報">
-        <p className="text-2xl">エラーが発生しました。</p>
-        </Layout>
-      </>
-    )
+    return <p>エラーが発生しました。</p>
   } else {
     if (!data) {
       return <p>取得中...</p>
