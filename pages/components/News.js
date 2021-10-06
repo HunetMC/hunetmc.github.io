@@ -10,6 +10,8 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
 // Next.js
 import Link from "next/link"
 
+import moment from 'moment-timezone'
+
 function App (props) {
     const { data, error } = useSwr(
       '/api/TumblrPost',
@@ -32,10 +34,15 @@ function App (props) {
               <Card.Body>
                 <Link href={d.url}>
                     <a>
-                        <Card.Title>{d.title} ({d.date})</Card.Title>
+                        <Card.Title>{d.title}</Card.Title>
                     </a>
                 </Link>
-                <Card.Text dangerouslySetInnerHTML={{ __html: d.body }} />
+                <Card.Text>
+                  <div dangerouslySetInnerHTML={{ __html: d.body }} />
+                  <div style={{ 'textAlign' : 'right' }}>
+                    <small>{moment(d.date).tz("Asia/Tokyo").format('YYYY/MM/DD')}</small>
+                  </div>
+                </Card.Text>
               </Card.Body>
             </Card>
         </div>
