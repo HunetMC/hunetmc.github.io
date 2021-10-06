@@ -24,7 +24,10 @@ function App (props) {
       )
     } else {
         return (
-          <>{data.username}</>
+          <div>
+            <h1 style={{ 'display' : 'inline-block' }}>{data.username}</h1>
+            <h3 style={{ 'display' : 'inline-block', 'marginLeft' : '5px' }}><Group uuid={uuid.uuid} /></h3>
+          </div>
         )
     }
   }

@@ -4,20 +4,27 @@ import Head from './Head'
 import PlayerNameHolder from './PlayerNameHolder'
 import Biography from './Biography'
 
+// Bootstrap
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 function App (props) {
   const uuid = props;
   
   return (
-    <div>
-        <div>
+    <Container style={{ 'marginTop' : '5px' }}>
+      <Row>
+        <Col>
             <Head uuid={uuid.uuid} />
-        </div>
-        <div>
-          <p><PlayerNameHolder uuid={uuid.uuid} /></p>
-          <p><Online uuid={uuid.uuid} /></p>
-          <p><Biography uuid={uuid.uuid} /></p>
-        </div>
-    </div>
+        </Col>
+        <Col xs={9}>
+          <PlayerNameHolder uuid={uuid.uuid} />
+          <Online uuid={uuid.uuid} />
+          <Biography uuid={uuid.uuid} />
+        </Col>
+      </Row>
+    </Container>
   )
 }
 

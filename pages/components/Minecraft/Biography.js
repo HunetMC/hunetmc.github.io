@@ -5,6 +5,9 @@ import React, { useState, useEffect } from 'react';
 import useSwr from 'swr'
 const fetcher = (url) => fetch(url).then(res => res.text())
 
+// Card
+import Card from 'react-bootstrap/Card';
+
 function App (props) {
   const uuid = props;
   const { data, error } = useSwr(
@@ -16,12 +19,33 @@ function App (props) {
     return <></>
   } else {
       if (!data) {
-        return <p>ひとことは設定されていません...</p>
+        return (
+          <div>
+            <h6>ひとこと</h6>
+            <Card>
+              <Card.Body>まだ何も書かれていません。</Card.Body>
+            </Card>
+          </div>
+        )
       } else {
         if (data == "") {
-          return <p>ひとことは設定されていません...</p>
+          return (
+            <div>
+              <h6>ひとこと</h6>
+              <Card>
+                <Card.Body>まだ何も書かれていません。</Card.Body>
+              </Card>
+            </div>
+          )
         } else {
-          return <p>ひとこと: <span className="italic">{data.toString()}</span></p>
+          return (
+            <div>
+              <h6>ひとこと</h6>
+              <Card>
+                <Card.Body>{data.toString()}</Card.Body>
+              </Card>
+            </div>
+          )
         }
       }
     }

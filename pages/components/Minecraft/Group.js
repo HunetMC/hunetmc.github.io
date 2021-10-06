@@ -22,7 +22,7 @@ function App (props) {
     if (data === undefined || data === null || data === "") {
       return <></>
     } else {
-      if (data == "Staff") {
+      if (data == "staff") {
         return <Badge bg="info">Staff</Badge>
       } else {
         return <></>
