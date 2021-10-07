@@ -8,6 +8,9 @@ const fetcher = (url) => fetch(url).then((res) => res.text())
 // React
 import React, { useState, Fragment } from 'react';
 
+// Next.js
+import { useRouter } from 'next/router'
+
 // Bootstrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -19,13 +22,15 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 // Components
 import Layout from './components/Layout'
+import { Router } from 'next/dist/client/router';
 
 function App () {
     const { data, error } = useSwr(
         `https://api.skura.tech/players/list`,
         fetcher
     )
-    const [singleSelections, setSingleSelections] = useState([]);
+    const router = useRouter()
+    const [field, setField] = useState([]);
     
     if (error) {
         return (
@@ -38,6 +43,7 @@ function App () {
           )
         } else {
             var array = JSON.parse(data);
+            
             return (
                 <Fragment>
                 <Layout title="プレイヤー検索">
@@ -50,14 +56,23 @@ function App () {
                               size="lg"
                               id="basic-typeahead-single"
                               labelKey="name"
-                              onChange={setSingleSelections}
+                              onChange={setField}
                               options={array}
                               placeholder="プレイヤー名を入力してください。"
-                              selected={singleSelections}
+                              selected={field}
                             />
                         </Col>
                         <Col xs="auto" className="my-1">
-                          <Button size="lg" type="submit">検索</Button>
+                            <Button
+                                size="lg"
+                                type="submit"
+                                onClick={(e) => {
+                                    console.log(field)
+                                    router.push("/players/" + field)
+                                }}
+                            >
+                                検索
+                            </Button>
                         </Col>
                       </Row>
                     </Form>
