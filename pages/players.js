@@ -1,6 +1,3 @@
-// Bootstrap
-import Card from 'react-bootstrap/Card';
-
 // Data fetching
 import useSwr from 'swr'
 const fetcher = (url) => fetch(url).then((res) => res.text())
@@ -48,7 +45,6 @@ function App () {
             var array = JSON.parse(data);
             
             return (
-                <Fragment>
                 <Layout title="プレイヤー検索">
                   <Container style={{ 'marginTop': '100px' }} className="mx-auto">
                      <h1 className="text-center">プレイヤー検索</h1>
@@ -81,7 +77,6 @@ function App () {
                     </Form>
                   </Container>
                 </Layout>
-                </Fragment>
             )
         }
       }
