@@ -48,7 +48,7 @@ function App () {
                 <Layout title="プレイヤー検索">
                   <Container style={{ 'marginTop': '100px' }} className="mx-auto">
                      <h1 className="text-center">プレイヤー検索</h1>
-                     <Form className="mx-auto" style={{ 'max-width' : '600px' }}>
+                     <Form className="mx-auto" style={{ 'maxWidth' : '600px' }}>
                       <Row className="align-items-center">
                         <Col className="my-1">
                             <Typeahead
