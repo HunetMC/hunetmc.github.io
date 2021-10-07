@@ -7,7 +7,7 @@ import useSwr from 'swr'
 // Data fetching implements
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
-function App (props) {
+function App () {
     const { data, error } = useSwr(
       'https://api.mcsrvstat.us/2/skura.tech',
       fetcher
@@ -30,7 +30,7 @@ function App (props) {
           if (data.players.online == 0) {
             status = "<span>誰もログインしていません。</span>"
           } else {
-            status = "<span><span style={{ 'color' : 'gray' }, { 'font-size' : '25px' }}>" + data.players.online + "</span>人がオンラインです。</span>"
+            status = "<span><h3 class=\"d-inline-block\">" + data.players.online + "</h3>人がオンラインです。</span>"
           }
         }
         return (
