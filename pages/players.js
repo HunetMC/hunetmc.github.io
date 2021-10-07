@@ -59,14 +59,13 @@ function App () {
                               options={array}
                               placeholder="プレイヤー名を入力..."
                               selected={field}
+                              value={field}
                             />
                         </Col>
                         <Col xs="auto" className="my-1">
                             <Button
                                 size="lg"
-                                type="submit"
-                                onClick={(e) => {
-                                    console.log(field)
+                                onClick={() => {
                                     router.push("/players/" + field)
                                 }}
                             >
