@@ -1,5 +1,4 @@
 // Data fetching
-import useSwr from 'swr'
 const fetcher = (url) => fetch(url).then(res => res.text())
 
 export const getName = async (props) => {
