@@ -13,7 +13,7 @@ function App (props) {
   const uuid = props;
   
   return (
-    <Container style={{ 'marginTop' : '5px' }}>
+    <Container style={{ 'marginTop' : '5px', 'maxWidth' : '900px' }}>
       <Row>
         <Col>
             <Head uuid={uuid.uuid} />
