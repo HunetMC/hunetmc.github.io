@@ -22,7 +22,10 @@ import 'react-bootstrap-typeahead/css/Typeahead.css';
 
 // Components
 import Layout from './components/Layout'
-import { Router } from 'next/dist/client/router';
+
+// FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 function App () {
     const { data, error } = useSwr(
@@ -58,7 +61,7 @@ function App () {
                               labelKey="name"
                               onChange={setField}
                               options={array}
-                              placeholder="プレイヤー名を入力してください。"
+                              placeholder="プレイヤー名を入力..."
                               selected={field}
                             />
                         </Col>
@@ -71,7 +74,7 @@ function App () {
                                     router.push("/players/" + field)
                                 }}
                             >
-                                検索
+                                <FontAwesomeIcon icon={faSearch} />&nbsp;検索
                             </Button>
                         </Col>
                       </Row>
