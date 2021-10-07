@@ -5,6 +5,10 @@ import React from 'react';
 import useSwr from 'swr'
 const fetcher = (url) => fetch(url).then(res => res.text())
 
+// Bootstrap
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+
 function App (props) {
   const uuid = props;
   
@@ -48,13 +52,27 @@ function App (props) {
         if (data.toString() == "not_found") {
             return <></>
         } else {
-        let dateTime = new Date(parseInt(data.toString()) * 1000);
-        return (
-            <div style={{ 'display' : 'inline-block' }}>
-                <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8'>{dateTime.toLocaleDateString() + " " + dateTime.toLocaleTimeString()}</span>
-                最終ログイン: {timeAgo(dateTime)}
-            </div>
-        )
+            let dateTime = new Date(parseInt(data.toString()) * 1000);
+            const formatted = dateTime.getFullYear() + '/' + ('0' + (dateTime.getMonth() + 1)).slice(-2) + '/' +('0' + dateTime.getDate()).slice(-2) + ' ' +  ('0' + dateTime.getHours()).slice(-2) + ':' + ('0' + dateTime.getMinutes()).slice(-2) + ':' + ('0' + dateTime.getSeconds()).slice(-2)
+            const timestampTooltip = (props) => (
+                <Tooltip id="timestamp-tooltip" {...props}>{formatted} JST</Tooltip>
+              );
+              
+            return (
+                <div style={{ 'display' : 'inline-block' }}>
+                    <span className='tooltip rounded shadow-lg p-1 bg-gray-100 text-red-500 -mt-8'>  
+                        {dateTime.toLocaleDateString() + " " + dateTime.toLocaleTimeString()}
+                    </span>
+                    <span>最終ログイン: </span>
+                    <OverlayTrigger
+                      placement="right"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={timestampTooltip}
+                    >
+                      <span>{timeAgo(dateTime)}</span>
+                    </OverlayTrigger>
+                </div>
+            )
         }
       }
     }

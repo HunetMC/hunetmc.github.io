@@ -3,7 +3,6 @@ import Group from './Group';
 
 // Data fetching
 import useSwr from 'swr'
-
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 function App (props) {
@@ -27,6 +26,7 @@ function App (props) {
           <div>
             <h1 style={{ 'display' : 'inline-block' }}>{data.username}</h1>
             <h3 style={{ 'display' : 'inline-block', 'marginLeft' : '5px' }}><Group uuid={uuid.uuid} /></h3>
+            <p style={{ 'margin-bottom' : '-1px' }}>UUID: <code>{uuid.uuid}</code></p>
           </div>
         )
     }
