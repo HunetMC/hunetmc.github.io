@@ -1,9 +1,10 @@
-// React
-import React, { useState, useEffect } from 'react';
+// Data fetching
+import useSwr from 'swr'
+const fetcher = (url) => fetch(url).then(res => res.text())
 
 export const getName = async (props) => {
   const uuid = props;
-  return fetch('https://api.ashcon.app/mojang/v2/user/' + uuid);
+  return fetch('https://api.ashcon.app/mojang/v2/user/' + uuid, fetcher);
 };
 
 const RawPlayerName = async (req, res) => {
