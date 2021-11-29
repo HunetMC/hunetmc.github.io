@@ -35,7 +35,7 @@ function App () {
         }
         return (
             <div>
-            <Card style={{ 'margin-bottom': '5px' }}>
+            <Card style={{ 'marginBottom': '5px' }}>
               <Card.Body>
                 <Card.Text>
                     <div dangerouslySetInnerHTML={{ __html: status }} />

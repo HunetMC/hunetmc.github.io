@@ -39,7 +39,7 @@ function App (props) {
 };
 
     const { data, error } = useSwr(
-        uuid.uuid ? `https://api.skura.tech/players/last/${uuid.uuid}` : null,
+        uuid.uuid ? `https://api.skura.tech/player/${uuid.uuid}` : null,
         fetcher
     )
     
@@ -52,7 +52,7 @@ function App (props) {
         if (data.toString() == "not_found") {
             return <></>
         } else {
-            let dateTime = new Date(parseInt(data.toString()) * 1000);
+            let dateTime = new Date(parseInt(data.Last.toString()) * 1000);
             const formatted = dateTime.getFullYear() + '/' + ('0' + (dateTime.getMonth() + 1)).slice(-2) + '/' +('0' + dateTime.getDate()).slice(-2) + ' ' +  ('0' + dateTime.getHours()).slice(-2) + ':' + ('0' + dateTime.getMinutes()).slice(-2) + ':' + ('0' + dateTime.getSeconds()).slice(-2)
             const timestampTooltip = (props) => (
                 <Tooltip id="timestamp-tooltip" {...props}>{formatted} JST</Tooltip>

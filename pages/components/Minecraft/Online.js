@@ -11,7 +11,7 @@ import LastPlayed from './LastPlayed'
 function App (props) {
   const uuid = props;
   const { data, error } = useSwr(
-    uuid.uuid ? `https://api.skura.tech/players/online/${uuid.uuid}` : null,
+    uuid.uuid ? `https://api.skura.tech/player/${uuid.uuid}` : null,
     fetcher
   )
   

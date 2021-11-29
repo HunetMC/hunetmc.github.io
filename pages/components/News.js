@@ -38,7 +38,7 @@ function App (props) {
       } else {
         const content = data.posts.map((d) => 
         <div key={d.slug}>
-            <Card style={{ 'margin-bottom': '5px' }}>
+            <Card style={{ 'marginBottom': '5px' }}>
               <Card.Body>
                 <Link href={d.url}>
                     <a>

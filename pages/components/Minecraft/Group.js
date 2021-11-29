@@ -12,7 +12,7 @@ function App (props) {
   const uuid = props;
   
   const { data, error } = useSwr(
-    uuid.uuid ? `https://api.skura.tech/players/group/` + uuid.uuid : null,
+    uuid.uuid ? `https://api.skura.tech/player/` + uuid.uuid : null,
     fetcher
   )
   
