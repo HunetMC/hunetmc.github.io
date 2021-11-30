@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 // Data fetching
 import useSwr from 'swr'
-const fetcher = (url) => fetch(url).then(res => res.text())
+const fetcher = (url) => fetch(url).then(res => res.json())
 
 // Card
 import Card from 'react-bootstrap/Card';
@@ -11,11 +11,12 @@ import Card from 'react-bootstrap/Card';
 function App (props) {
   const uuid = props;
   const { data, error } = useSwr(
-    uuid.uuid ? `https://api.skura.tech/bio/` + uuid.uuid : null,
+    uuid.uuid ? `https://api.skura.tech/player/` + uuid.uuid : null,
     fetcher
   )
   
   if (error) {
+    console.log(data)
     return <></>
   } else {
       if (!data) {
@@ -28,7 +29,7 @@ function App (props) {
           </div>
         )
       } else {
-        if (data == "") {
+        if (data.Bio == "") {
           return (
             <div>
               <h6>ひとこと</h6>

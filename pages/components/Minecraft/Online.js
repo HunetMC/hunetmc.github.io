@@ -3,7 +3,7 @@ import React from 'react';
 
 // Data fetching
 import useSwr from 'swr'
-const fetcher = (url) => fetch(url).then(res => res.text())
+const fetcher = (url) => fetch(url).then(res => res.json())
 
 // Component
 import LastPlayed from './LastPlayed'
@@ -11,17 +11,16 @@ import LastPlayed from './LastPlayed'
 function App (props) {
   const uuid = props;
   const { data, error } = useSwr(
-    uuid.uuid ? `https://api.skura.tech/players/online/${uuid.uuid}` : null,
+    uuid.uuid ? `https://api.skura.tech/player/${uuid.uuid}` : null,
     fetcher
   )
-  
   if (error) {
     return <></>
   } else {
     if (!data) {
       return <p>取得中...</p>
     } else {
-      if (data.toString() == "true") {
+      if (data.Online == "true") {
         return (
           <>
             <div style={{ 'display' : 'inline-block', 'width' : '20px', 'height' : '20px', 'marginRight' : '5px', 'borderRadius' : '50%', 'backgroundColor' : '#40E675' }}></div>
@@ -31,15 +30,20 @@ function App (props) {
           </>
         ) 
         } else {
-          return (
-            <>
-              <div style={{ 'display' : 'inline-block', 'width' : '20px', 'height' : '20px',  'marginRight' : '5px', 'borderRadius' : '50%', 'backgroundColor' : '#F84B4B' }}></div>
-              <div style={{ 'display' : 'inline-block', 'position' : 'relative', 'bottom' : '5px' }}>
-                <span>オフライン, </span>
-                <LastPlayed uuid={uuid.uuid} style={{ 'display' : 'inline-block' }}/>
-              </div>
-            </>
-          )
+          if (data.Online == "false") {
+            return (
+              <>
+                <div style={{ 'display' : 'inline-block', 'width' : '20px', 'height' : '20px',  'marginRight' : '5px', 'borderRadius' : '50%', 'backgroundColor' : '#F84B4B' }}></div>
+                <div style={{ 'display' : 'inline-block', 'position' : 'relative', 'bottom' : '5px' }}>
+                  <span>オフライン, </span>
+                  <LastPlayed uuid={uuid.uuid} style={{ 'display' : 'inline-block' }}/>
+                </div>
+              </>
+            )
+          } else {
+            console.log(data)
+            return <>不明なエラー</>
+          }
       }
     }
   }
