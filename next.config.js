@@ -14,7 +14,4 @@ const rewrites = async () => {
 module.exports = {
   reactStrictMode: true,
   rewrites,
-  images: {
-    domains: ['crafatar.com'],
-  },
 }
