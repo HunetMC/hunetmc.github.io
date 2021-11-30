@@ -18,7 +18,6 @@ jobs:
       - name: build
         run: |
           yarn run build
-          touch out/.nojekyll
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3.6.4
         with:
